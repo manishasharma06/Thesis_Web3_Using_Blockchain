@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<html>
+    <head>
+        <title>Request</title>
+        <link rel="stylesheet" href="{% static 'client.css' %}"/>
+    </head>
+    <body>
+        <div class="cancellation-container">
+            <h3>Request cancellation</h3>
+            <div class="sub-cancellation-container">
+                <p>NOTE : A deduction(convinience fee) of 25% of total amount will be applied on cancellation of order.</p>
+                <div class="table-2">
+                    <table>
+                        <tr>
+                            <th>Order ID : </th>
+                            <td>{{ order.order_id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Purchase Amount : </th>
+                            <td>€ {{ order.order_amt }}</td>
+                        </tr>
+                        <tr>
+                            <th>Cancellation Charges : </th>
+                            <td>€ {{ deduction }}</td>
+                        </tr>
+                        <tr>
+                            <th>Refund Amount : </th>
+                            <td>€ {{ refund_amt }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="can-form">
+                    <form method="POST" action="{% url 'cancel_request' id=order.order_id %}">
+                        {% csrf_token %}
+                        <textarea placeholder="Please enter a reason for cancellation." name="reason" required></textarea>
+                        <button type="submit" onclick="return confirm('Sure you wanna cancel the order?')">Request Cancellation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+{% endblock %}

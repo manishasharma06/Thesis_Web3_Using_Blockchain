@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="{% static 'client.css' %}"/>
+    </head>
+    <body>
+        <div class="customer-info">
+            <h1 class="customer-head">Welcome, {{ user.username }}!</h1>
+            <p class="customer-wallet">Wallet Balance: € {{ user.wallet_amt }}</p>
+        </div>
+        <div class="market-outline">
+            <p class="market-head">Car Market</p>
+        </div>
+        <div class="market-container">
+            {% for car in car_inv %}
+            <div class="car-flex-container">
+                <div class="car-left-flex-container">
+                    <p class="car-name">BMW {{car.model}}</p>
+                    <p>Manufacturing year : {{ car.year }}</p>
+                    <p>Fuel Type : {{ car.fuel_type }}</p>
+                    <p>Transmission : {{ car.transmission }}</p>
+                    <p>Availability : {{ car.stock }}</p>
+                </div>
+                <div class="car-right-flex-container">
+                    <p class="car-price">Price : € {{ car.price }}</p>
+                    {% if car.stock == "In stock" %}
+                        <a href="{% url 'client_order' car_id=car.car_id user_id=user.user_id %}" class="purchase-btn">Purchase</a>
+                    {% else %}
+                        <span style="color: grey;" class="not-available">Not Available</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>
+
+{% endblock %}

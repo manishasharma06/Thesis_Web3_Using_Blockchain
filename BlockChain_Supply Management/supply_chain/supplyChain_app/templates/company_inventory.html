@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<html>
+    <head>
+        <title>Inventory</title>
+        <link rel="stylesheet" href="{% static 'company.css' %}"/>
+    </head>
+    <body>
+        <h1 class="base_name">BMW</h1>
+        <div class="flex-container">
+            <div class="flex-left">
+                <h2 class="flex-head">Create Product</h2>
+                <div>
+                    <form method="POST" class="form">
+                    {% csrf_token %}
+                        {{ fm.as_p }}
+                        <input type="submit" value="Create">
+                    </form>
+                    <p>{{ msg }}</p>
+                </div>
+            </div>
+            <div class="flex-right">
+                <h2 class="flex-head">Inventory</h2>
+                {% for car in car_inv %}
+                    <div class="car-container">
+                        <div class="car-container-left">
+                            <h2 class="car-name">{{ car.model }}</h2>
+                            <p>Car ID : {{ car.car_id }}</p>
+                            <p>Manufactuing Year : {{ car.year }}</p>
+                            <p>Price : € {{ car.price }}</p>
+                            <p>Fuel Type : {{ car.fuel_type }}</p>
+                            <p>Transmission : {{ car.transmission }}</p>
+                            <p>Availability : {{ car.stock }}</p>
+                        </div>
+                        <div class="car-container-right">
+                            <a href="{% url 'delete_car' car_id=car.car_id %}" class="delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<html>
+    <head>
+        <title>{{ company }}</title>
+        <link rel="stylesheet" href="{% static 'company.css' %}"/>
+    </head>
+    <body>
+        <h1 class="base_name">{{ company }}</h1>
+        <h3 class="sub-heading">Available AMT : € {{ wallet }}</h3>
+        <h2 class="sub-heading">Order List</h2>
+        <div class="ortable">
+            <table class="order-table">
+                <tr>
+                    <th>Order ID</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>International/Domestic</th>
+                    <th>Status</th>
+                    <th>Order Date</th>
+                    <th>EST Delivery</th>
+                    <th>Details</th>
+                </tr>
+                {% for order in orders %}
+                    {% if order.status != "Delivered" %}
+                        <tr>
+                            <td>{{ order.ship_id }}</td>
+                            <td>BMW</td>
+                            <td>{{ order.order.user_id.country }}</td>
+                            <td>{{ order.type }}</td>
+                            <td>{{ order.status }}</td>
+                            <td>{{ order.order_date }}</td>
+                            <td>{{ order.est_del }}</td>
+                            <td><a href="{% url 'merchant_page' option=option selected_id=order.ship_id %}">View</a></td>
+                        </tr>
+                    {% endif %}
+                {% empty %}
+                    <tr>
+                        <td colspan="8">No Orders to Fulfill.</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        
+        {% if shipment == None %}
+            <div class="merchant-order-update">
+                <p>Shipment ID : Please select ID to view.</p>
+                <p>From : None To : None</p>
+                <div class="merchant-order-form">
+                    <form method="POST" action="#">
+                        {% csrf_token %}
+                            <select name="update_order" id="update_order" disabled>
+                                <option value="1">Preparing Shipment</option>
+                                <option value="2">InTransit</option>
+                                <option value="3">Delivered</option>
+                            </select>
+                            <button type="submit" disabled>Update Order</button>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <div class="merchant-order-update">
+                <p>Shipment ID : {{ shipment.ship_id }}</p>
+                <p>From : Germany To : {{ shipment.order.user_id.country }}</p>
+                <div class="merchant-order-form">
+                    <form method="POST" action="{% url 'merchant_update' option=option selected_id=shipment.ship_id %}">
+                        {% csrf_token %}
+                            <select name="update_order" id="update_order">
+                                <option value="1">Preparing Shipment</option>
+                                <option value="2">InTransit</option>
+                                <option value="3">Delivered</option>
+                            </select>
+                            <button type="submit">Update Order</button>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+
+    </body>
+</html>
+
+{% endblock %}

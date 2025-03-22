@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<html>
+    <head>
+        <title>Track Order</title>
+        <link rel="stylesheet" href="{% static 'company.css' %}"/>
+    </head>
+    <body>
+        <h1 class="base_name">Order Tracking</h1>
+        <h2 class="sub-heading">Order ID : {{order.order_id}}</h2>
+        <div class="ortable">
+            <table class="order-table">
+                <tr>
+                    <th>Actions</th>
+                    <th>TimeStamp</th>
+                </tr>
+                {% for transaction in transactions %}
+                    <tr>
+                        <td>{{transaction.action}}</td>
+                        <td>{{transaction.timestamp}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>
+
+{% endblock %}

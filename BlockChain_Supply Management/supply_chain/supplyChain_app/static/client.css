@@ -1,0 +1,342 @@
+.market-outline{
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #34495e;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 75px auto;
+    max-width: 800px;
+}
+
+.market-head {
+    font-size: 36px;
+    color: #333;
+    font-weight: bold;
+}
+
+.market-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+.car-name{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.car-flex-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    color: #333;
+}
+
+.car-left-flex-container{
+    flex: 1;
+}
+
+.car-right-flex-container{
+    flex: 1;
+    text-align: right;
+}
+
+.car-right-flex-container p{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.car-price{
+    font-size: 18px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.purchase-btn{
+    text-decoration: none;
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.purchase-btn:hover {
+    background-color: #2980b9;
+}
+
+.not-available {
+    color: grey;
+    font-style: italic;
+}
+
+.customer-info{
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #34495e;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 100px auto;
+    max-width: 600px;
+}
+
+.customer-head{
+    font-size: 36px;
+    margin-bottom: 32px;
+    color: #333;
+}
+
+.customer-wallet{
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 18px;
+    text-align: right;
+    color: #e67e22;
+}
+
+/* ---------------------- Client Order Page ----------------------*/
+
+.outer-outer{
+    padding: 12px 48px;
+}
+
+.outer-container{
+    display: flex;
+    border-top: 1px solid #333;
+    margin-top: 10vh;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.left-flex{
+    flex: 1;
+    color: #333;
+    border-right: 1px solid #333;
+    padding: 2vh 50px;
+}
+.left-flex a{
+    color: #3498db;
+}
+.right-flex{
+    flex: 1;
+    padding: 2vh 50px;
+    color: #333;
+}
+
+.header{
+    text-align: center;
+    margin-top: 100px;
+    font-size: 36px;
+    color: #ccc;
+}
+
+.heading{
+    font-size: 30px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.sub-heading{
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+    color: #e67e22;
+}
+
+.content{
+    font-size: 16px;
+}
+
+table{
+    font-size: 16px;
+    color: #333;
+    width: 100%;
+}
+td{
+    text-align: end;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+th{
+    text-align: start;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+.ord-area{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.ord-btn{
+    text-decoration: none;
+    background-color: #3498db;
+    font-size: 16px;
+    padding: 12px 24px;
+    color: #fff;
+    border-radius: 7px;
+    transition: background-color 0.3s ease;
+}
+
+.ord-btn:hover{
+    background-color: #2980b9;
+    border: 1px solid #3498db;
+    color: #ccc;
+}
+
+/* ---------------------- Success Page ----------------------*/
+
+.success-outline{
+    margin-top: 45px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-box{
+    border: 2px solid #3498db;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin-top: 10vh;
+    padding: 0 36px;
+    border-radius: 12px;
+    text-align: center;
+    height: 70vh;
+}
+
+.home-btn{
+    margin-top: 36px;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.home-btn a{
+    background-color: #3498db;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 12px 24px;
+    color: #fff;
+    border-radius: 7px;
+    transition: background-color 0.3s ease;
+}
+
+.home-btn a:hover {
+    background-color: #2980b9;
+    border: 1px solid #3498db;
+    color: #fff;
+}
+
+.tick-img img{
+    width: 150px;
+}
+.tick-img p{
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #e67e22;
+    margin-top: -18px;
+}
+
+.success-info{
+    margin: 20px;
+    padding: 12px;
+    text-align: start;
+    margin-top: 5vh;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+    margin-bottom: 5vh;
+}
+
+.success-info p{
+    font-size: 18px;
+    color: #3498db;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.success-info table{
+    font-size: 16px;
+    width: 100%;
+}
+
+.success-info table td{
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 12px;
+}
+
+/* ---------------------- Request Client Page ----------------------*/
+
+.cancellation-container{
+    margin-top: 100px;
+    text-align: center;
+}
+
+.cancellation-container h3{
+    font-size: 28px;
+}
+
+.cancellation-container p{
+    font-size: 18px;
+    font-weight: bold;
+    color: #f9e076;
+}
+
+.table-2{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 72px 0;
+}
+
+.table-2 table{
+    color: #fff;
+    width: 40%;
+    font-size: 18px;
+}
+
+.can-form{
+    margin: 12px 24px;
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+}
+
+.can-form textarea{
+    resize: none;
+    width: 80%;
+    margin: 0 24px;
+    height: 16vh;
+    font-size: 18px;
+    border-radius: 12px;
+}
+
+.can-form button{
+    margin-top: 36px;
+    border-radius: 6px;
+    font-size: 16px;
+    padding: 12px 18px;
+    background-color: #d35400;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.can-form button:hover{
+    background-color: #953d03;
+}

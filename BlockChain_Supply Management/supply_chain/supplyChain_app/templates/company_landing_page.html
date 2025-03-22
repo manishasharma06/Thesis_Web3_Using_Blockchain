@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<html>
+    <head>
+        <title>BMW</title>
+        <link rel="stylesheet" href="{% static 'company.css' %}"/>
+    </head>
+    <body>
+        <h1 class="base_name">Admin Panel</h1>
+        <div class="company-links">
+            <a href="{% url 'company_orders' %}">Orders</a>
+            <a href="{% url 'company_inventory' %}">Inventory</a>
+            <a href="{% url 'company_actions' option=1 %}">Actions</a>
+        </div>
+
+        <!-- recent orders, recent transations. -->
+    </body>
+</html>
+
+{% endblock %}

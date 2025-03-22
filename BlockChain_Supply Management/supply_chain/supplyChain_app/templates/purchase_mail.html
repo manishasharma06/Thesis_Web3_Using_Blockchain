@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Your Purchase!</title>
+</head>
+<body>
+    {% if type == "purchase_made" %}
+        <p>Dear {{ customer_name }},</p>
+
+        <p>Thank you for choosing Mercedes for your recent car purchase. We are thrilled to have you as our valued customer.</p>
+
+        <p>Congratulations on your new {{ car_model }}! We are thrilled that you have entrusted us with providing you with a vehicle that meets your needs and preferences.<br>
+             Our team has worked diligently to ensure that your purchasing experience was smooth and enjoyable from start to finish.</p>
+        
+        <p>If you have any questions or need assistance with your new car, please feel free to contact us. We're here to help! Once again, thank you for your purchase.<br>
+             We look forward to serving you again in the future.</p>
+        
+        <p>Best regards,<br>
+        The BMW Team</p>
+
+    {% elif type == "request_cancellation" %}
+        <p>Dear {{ customer_name }},</p>
+
+        <p>We hope this message finds you well. We want to acknowledge that we have received your recent request for cancellation with the following details:</p>
+        <p>Request ID: <b>{{ request_id }}</b><br>
+            Status: <b>Pending Processing</b></p>
+
+        <p>Your request is currently being processed by our team, and we will ensure that it is handled promptly and efficiently. Please note that we are committed<br> to providing excellent service to all our clients, and we appreciate your understanding as we work to address your request.</p>
+        
+        <p>If you have any further questions or concerns regarding your cancellation request or any other matter, please feel free to reach out to us. We are here to assist you every step of the way.<br>
+            Thank you for choosing Mercedes. We value your business and look forward to serving you again in the future.</p>
+        
+        <p>Best regards,<br>
+        The BMW Team</p>
+
+    {% elif type == "order_update" %}
+        <p>Dear {{ customer_name }},</p>
+
+        <p>We hope this email finds you well. We wanted to provide you with an update on the status of your order with the following details:</p>
+        <p>Order ID: <b>{{ order_id }}</b><br>
+            Status: <b>{{ status }}</b></p>
+
+        <p>Your order is currently in the following stage(s): <b>{{ status }}</b>. We are diligently monitoring its progress and will inform you of any changes or updates along the way.</p>
+        
+        <p>If you have any further questions or concerns regarding any matter, please feel free to reach out to us. We are here to assist you every step of the way.<br>
+            Thank you for choosing Mercedes. We value your business and look forward to serving you again in the future.</p>
+        
+        <p>Best regards,<br>
+        The Mercedes Team</p>
+        
+    {% elif type == "request_update" %}
+            
+        <p>Dear {{ customer_name }},</p>
+        <p>We hope this email finds you well. We are writing to inform you about the status of your recent cancellation request.</p>
+        <p>Order ID: <b>{{ order_id }}</b><br>
+            Status: <b>{{ status }}</b><br>
+            Reason: <b>{{ reason }}</b></p>
+            
+        <p>If your request has been accepted, the cancellation process will proceed accordingly, and you will be provided with any necessary updates regarding refunds or other related matters.</p>
+        
+        <p>If your request has been rejected, please rest assured that your order will continue to be processed as usual.<br/>
+            Should you have any questions or require further assistance, please feel free to contact us. We are here to assist you in any way we can.<br/><br/>
+            
+            Thank you for your understanding.
+            </p>
+        
+        <p>Best regards,<br>
+        The BMW Team</p>
+    {% elif type == "initiated_refund" %}
+            
+        <p>Dear {{ customer_name }},</p>
+        <p>We hope this email finds you well. We are writing to inform you that the refund process for your recent order has been initiated successfully.</p>
+        <p>Order ID: <b>{{ order_id }}</b><br>
+            Status: <b>{{ status }}</b><br>
+            Refund Amount: <b>€ {{ refund_amt }}</b><br>
+            Convenience Fee: 25% of Refund Amount</b></p>
+            
+        <p>Please note that a convenience fee of 25% of the refund amount has been deducted. The remaining amount, after deducting the convenience fee,<br> will be processed and refunded to your original payment method.</p>
+        
+        <p>If you have any questions or concerns regarding the refund process or if you encounter any issues with the refund, please do not hesitate to reach out to us.<br> We are here to assist you and ensure a smooth resolution.<br/><br/>
+            
+            Thank you for your understanding.
+            </p>
+        
+        <p>Best regards,<br>
+        The BMW Team</p>
+    {% elif type == "send_receipt" %}
+            
+        <p>Dear {{ customer_name }},</p>
+        <p>We hope this email finds you well. We are pleased to provide you with the receipt for your recent {{ model_name }} purchase. Below are the details of your transaction:</p>
+        <p>Order ID: <b>{{ order_id }}</b><br>
+            Base Price : <b>{{ base_amount }}</b><br>
+            Final price(19% VAT) : <b>€ {{ amount }}</b><br>
+            Purchase Date : <b>{{ purchase_date }}</b></p>
+            
+        <p>Thank you for choosing BMW. We appreciate your business and hope you enjoy your new car.</p>
+        
+        <p>If you have any questions or need further assistance, please feel free to contact us.</p>
+        
+        <p>Best regards,<br>
+        The BMW Team</p>
+        {% elif type == "send_refund_receipt" %}
+                
+            <p>Dear {{ customer_name }},</p>
+            <p>We are writing to confirm that the refund process for your recent order has been successfully initiated. Below are the details of your refund:</p>
+            <p>Order ID: <b>{{ order_id }}</b><br>
+                Refund Amount : <b>€ {{ amount }}</b><br>
+                Convenience Fee: <b>25%</b> of Refund Amount<br>
+                Refund ID : <b>{{ refund_id }}</b><br>
+                Refund Date : <b>{{ refund_date }}</b><br>
+                Payment Method : <b>Original Method</b></p>
+                
+            <p>Please note that a convenience fee of 25% of the refund amount has been deducted. The remaining amount, after deducting the convenience fee,<br> will be returned to your original payment method.</p>
+            <p>The refunded amount of € {{amount}} has been processed and will be returned to your account. Please allow 7 business days for the refund to reflect in your account.</p>
+            <p>If you have any questions or need further assistance, please feel free to contact us.</p>
+            <p>Thank you for your understanding and patience throughout this process.</p>
+            
+            <p>Best regards,<br>
+            The BMW Team</p>
+    {% endif %}
+</body>
+</html>

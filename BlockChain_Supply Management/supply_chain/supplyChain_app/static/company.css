@@ -1,0 +1,654 @@
+/* Updated css for company site or every site */
+
+.base_name{
+    text-align: center;
+    font-size: 38px;
+    color: #fff;
+    margin-top: 100px;
+}
+
+.company-links{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.company-links a{
+    display: inline-block;
+    text-decoration: none;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.company-links a:hover{
+    background-color: #8e44ad;
+}
+
+.flex-container{
+    display: flex;
+    margin-top: 75px;
+}
+.flex-left{
+    flex: 40%;
+    border-right: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+}
+
+.form{
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid #8e44ad;
+    border-radius: 6px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 15px;
+    color: #333;
+    background-color: #fff;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    background-color: #8e44ad;
+}
+
+.fuel_type{
+    width: 100%;
+    text-align: left;
+    border: none;
+}
+
+.fuel_type td{
+    border: none;
+    color: #333;
+}
+
+.flex-right{
+    flex: 60%;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-top: 1px solid #ddd;
+    max-height: 135vh;
+    overflow-y: scroll;
+}
+.flex-right::-webkit-scrollbar {
+    width: 10px; 
+}
+
+.flex-right::-webkit-scrollbar-thumb {
+    background-color: #ff8c00;
+    border-radius: 5px;
+}
+
+.flex-right::-webkit-scrollbar-track {
+    background-color: #f4f4f4;
+}
+.flex-head{
+    font-size: 24px;
+    text-align: center;
+    color: #fff;
+    margin-top: 32px;
+    margin-bottom: 36px;
+}
+
+.car-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+}
+.car-name{
+    text-decoration: underline;
+    margin-bottom: 30px;
+    color: #3498db;
+}
+
+.car-container-left{
+    flex: 1;
+}
+
+.car-container-right{
+    flex-shrink: 0;
+}
+
+.car-container p{
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.car-container-right a{
+    background-color: #d35400;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 8px 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.car-container-right a:hover {
+    background-color: #a04102;
+    text-decoration: underline;
+    color: #fff;
+}
+
+/* for information tobe displayed in form of list */
+.sub-heading {
+    font-size: 24px; 
+    text-align: center;
+    color: #fff; 
+    margin-bottom: 30px;
+}
+
+.ortable{
+    padding: 12px 48px;
+}
+
+.order-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto;
+    background-color: #3498db;
+}
+
+.order-table th, td {
+    border: 1px solid #ddd;
+    padding: 12px 16px;
+    text-align: left;
+    color: #fff;
+}
+
+.order-table th {
+    background-color: #8e44ad;
+    font-size: 18px;
+}
+
+.order-table td{
+    font-size: 16px;
+}
+
+.order-table tr:nth-child(even) {
+    background-color: #2980b9;
+}
+  
+.order-table tr:hover {
+    background-color: #2980b9;
+}
+
+.order-table a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.order-table a:hover {
+    text-decoration: underline;
+}
+/* list styling ends here */
+
+/* company actions */
+
+.action-flex{
+    border-top: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    height: 75vh;
+}
+
+.action-left{
+    flex: 30%;
+    text-align: center;
+    border-right: 1px solid #fff;
+}
+
+.action-left a{
+    display: block;
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+    margin: 24px 48px;
+    padding: 18px;
+    transition: all 0.3s ease-in-out;
+}
+
+.action-left .selected{
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #333;
+    border-radius: 6px;
+}
+
+.action-left a:hover{
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    color: #333;
+    scale: 1.1;
+}
+
+.action-right{
+    flex: 70%;
+    text-align: center;
+}
+
+.search-form {
+    margin-bottom: 10px;
+}
+
+.search-form input[type="text"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+    width: 400px;
+    font-size: 14px;
+}
+
+.search-form button {
+    padding: 12px 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.status-list{
+    padding: 24px 36px;
+    height: 42vh;
+    overflow-y: scroll;
+}
+
+.status{
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    height: fit-content;
+    color: #333;
+    margin-bottom: 24px;
+    padding: 12px 24px;
+    border: 1px solid #3498db;
+}
+
+.status .bold{
+    font-size: 18px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.status p{
+    font-size: 16px;
+}
+
+.status-action{
+    display: flex;
+    justify-content: right;
+    align-items: baseline;
+}
+
+.status-action .refund-btn{
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 18px;
+    cursor: pointer;
+}
+
+.status-action .cancel-btn{
+    margin-left: auto;
+    background-color: #808080;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    padding: 12px 18px;
+    margin-bottom: 18px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.status-form{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 40%;
+    margin-bottom: 10px;
+    padding: 0 18px;
+}
+
+.status-form select{
+    margin-right: 24px;
+    height: 42px;
+}
+
+.status-form button{
+    width: 50%;
+    font-size: 14px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.req-form{
+    display: flex;
+    width: 100%;
+}
+
+.req-form textarea{
+    width: 100%;
+    border-radius: 6px;
+    height: 12vh;
+    resize: none;
+    font-size: 16px;
+}
+
+.req-form .accept{
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    padding: 12px 16px;
+    margin-top: 18px;
+    margin-right: 36px;
+    cursor: pointer;
+}
+
+.req-form .reject{
+    background-color: #d35400;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    padding: 12px 16px;
+    margin-top: 18px;
+    cursor: pointer;
+}
+
+/* action option 2 */
+
+.transaction-progress{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+.transaction{
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.transaction-details{
+    padding: 10px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 18px;
+}
+
+.arrow{
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid #4CAF50;
+    margin-right: 20px;
+}
+
+/* action option 3's */
+.mail{
+    height: 75vh;
+    overflow-y: scroll;
+}
+
+.create-mail{
+    max-width: 800;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.create-mail form{
+    display: flex;
+    flex-direction: column;
+}
+
+.create-mail label{
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.create-mail input[type="text"],
+.create-mail textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.create-mail textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.create-mail button[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-mail button[type="submit"]:disabled{
+    cursor: not-allowed;
+}
+
+.create-mail button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+.create-mail input[type="text"]:disabled,
+.create-mail textarea:disabled {
+    background-color: #f2f2f2;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.mail-container{
+    max-width: 800;
+    margin: 20px auto;
+    padding: 20px;
+}
+.mail-view{
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: rgba(0, 0, 0, 0.1);
+    color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 32px;
+}
+.mail-subject{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+.mail-body{
+    text-align: left;
+    font-size: 16px;
+}
+.mail-timestamp{
+    text-align: right;
+}
+
+/*------------action option 5---------------*/
+
+.select-merchant-flex{
+    display: flex;
+}
+.left-select-merchant{
+    flex: 1;
+}
+.right-select-merchant{
+    flex: 1;
+}
+
+.merch-select-form{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.merch-select-form form{
+    width: 100%;
+    text-align: center;
+}
+.merch-select-form select{
+    width: 75%;
+    padding: 8px;
+}
+.merch-select-form button{
+    width: 35%;
+    padding: 10px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    background-color: #4CAF50;
+    border: none;
+}
+
+/* merchant page */
+
+.merchant-order-update{
+    color: #333;
+    text-align: center;
+    margin: 24px 48px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+.merchant-order-update p {
+    font-weight: bold;
+    font-size: 22px;
+}
+.merchant-order-form{
+    margin: 0 256px;
+}
+.merchant-order-form button{
+    padding: 8px 64px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    color: #f2f2f2;
+    background-color: #4CAF50;
+}
+
+.block-rep{
+    display: flex;
+    padding: 12px 48px;
+    margin: 0 48px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.6);
+    align-items: center;
+    justify-content: center;
+}
+.block{
+    background-color: #8e44ad;
+    border-radius: 12px;
+    padding: 12px 48px;
+    margin-right: 48px;
+}
+.arrow-right{
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-left: 15px solid #4CAF50;
+    margin-right: 40px;
+}
+.block-search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.msg-block{
+    text-align: center;
+}
+.info-blockchain{
+    background-color: rgba(255, 255, 255, 0.6);
+    margin: 24px 48px;
+    border-radius: 12px;
+    padding: 12px 24px;
+    color: #333;
+    font-size: 18px;
+}
+.para .head{
+    font-size: 20px;
+    font-weight: bold;
+}

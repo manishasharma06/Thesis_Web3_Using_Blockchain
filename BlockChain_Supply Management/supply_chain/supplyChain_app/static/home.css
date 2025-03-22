@@ -1,0 +1,278 @@
+/* ---------------------- Navigation Bar ----------------------*/
+body{
+    background: linear-gradient(135deg, #3498db, #8e44ad);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    font-size: 18px;
+    top: 0;
+    left: 0;
+    height: 42px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.nav a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav a:hover{
+    text-decoration: underline;
+}
+
+.nav-flex-left{
+    flex: 50%;
+}
+
+.nav-flex-left a{
+    margin-left: 12.5px;
+    margin-right: 7.5px;
+    text-decoration: none;
+}
+
+.nav-flex-left a:hover{
+    text-decoration: underline;
+}
+
+.nav-flex-right{
+    flex: 50%;
+    padding-right: 36px;
+    text-align: end;
+}
+
+.nav-flex-right a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-flex-right a:hover{
+    text-decoration: underline;
+}
+
+/* ---------------------- End of Navigation Bar ----------------------*/
+
+/* ---------------------- Login Container ----------------------*/
+
+.login-container{
+    padding: 25px;
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+
+.home-head{
+    font-size: 28px;
+    text-align: center;
+    margin-top: 125px;
+}
+
+.user-info-container{
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: relative;
+}
+
+.user-info{
+    padding: 20px;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.user-info p{
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.user-info p:last-child{
+    margin-bottom: 0;
+}
+
+.user-info p:first-child{
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.login-btn{
+    text-decoration: none;
+    display: inline-block;
+    background-color: #3498db;
+    font-size: 18px;
+    padding: 12px 20px;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: 2px solid transparent;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.login-btn:hover{
+    background-color: #2980b9;
+}
+
+.login-btn:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+/* ---------------------- End of Login Container ----------------------*/
+
+/* ---------------------- Form ----------------------*/
+
+.user-form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 3px solid #ddd;
+    border-radius: 8px;
+}
+
+.form-group{
+    margin-bottom: 16px;
+}
+
+.user-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.user-form input,
+.user-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.user-form input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.user-form input[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.user-form input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* ---------------------- End of Form ----------------------*/
+
+.order-container{
+    padding: 25px;
+    font-size: 18px;
+}
+
+.order-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-details,
+.order-actions{
+    flex: 1;
+    width: 100%;
+}
+
+.order-id{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #3498db;
+}
+
+.order-detail p{
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.order-detail p:last-child{
+    margin-bottom: 0;
+}
+
+.order-detail p:first-child{
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.order-actions p{
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.send-receipt-btn{
+    text-decoration: none;
+    background-color: #f39c12;
+    font-size: 18px;
+    padding: 8px;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
+}
+
+.order-actions .cancel-btn{
+    text-decoration: none;
+    background-color: #d35400;
+    margin-left: 16px;
+    font-size: 18px;
+    padding: 8px;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
+}
+
+.order-amt {
+    align-self: flex-end;
+    font-weight: bold;
+}
+
+.send-receipt-btn:hover {
+    background-color: #d35400;
+}

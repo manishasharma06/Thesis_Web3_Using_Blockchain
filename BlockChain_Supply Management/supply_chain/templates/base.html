@@ -1,0 +1,28 @@
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'home.css' %}"/>
+    </head>
+    <body>
+        <div class="nav">
+            <div class="nav-flex-left">
+                <a href="{% url 'home' %}">Home</a>
+                {% if request.session.user_id %}
+                    <a href="{% url 'client' %}">Browse</a>
+                {% endif %}
+                <a href="{% url 'company_landing_page' %}">BMW</a>
+                <a href="{% url 'merchant_page' option=1 selected_id=0 %}">Arihaat</a>
+                <a href="{% url 'merchant_page' option=2 selected_id=0 %}">Vilosma</a>
+                <a href="{% url 'blockchain' %}">BlockChain</a>
+            </div>
+            <div class="nav-flex-right">
+                {% if request.session.user_id %}
+                    <a href="{% url 'logout' %}">Log Out</a>
+                {% endif %}
+            </div>
+        </div>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

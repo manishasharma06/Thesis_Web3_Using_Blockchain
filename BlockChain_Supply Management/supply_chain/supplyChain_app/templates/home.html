@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<html>
+    <head>
+        <title>Home</title>
+    </head>
+    <body>
+        {% if not request.session.user_id %}
+            <h2 class="home-head">User Login</h2>
+            <div class="login-container">
+                {% for user in users %}
+                    <div class="user-info-container">
+                        <div class="user-info">
+                            <p>Username : {{user.username}}</p>
+                            <p>User ID : {{ user.user_id }}</p>
+                            <p>Address : {{user.address}}</p>
+                            <p>Phone Number : {{user.phone_num}}</p>
+                            <p>Wallet : € {{user.wallet_amt}}</p>
+                        </div>
+                        <a href="{% url 'login' user_id=user.user_id  %}" class="login-btn">Log In</a>
+                    </div>
+                {% empty %}
+                    <p>No users found!</p>
+                {% endfor %}
+            </div>
+
+            <h2 class="home-head">Create User</h2>
+            <div class="user-form">
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for field in fm %}
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <input type="submit" value="Create User"/>
+                </form>
+            </div>
+        {% else %}
+            <h2 class="home-head">Update Profile</h2>
+            <div class="user-form">
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for field in update_form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                    {% endfor %}
+                    <input type="submit" value="Update"/>
+                </form>
+            </div>
+            <div>
+                <h2 class="home-head">Orders History</h2>
+                <div class="order-container">
+                    {% for order in orders %}
+                    <div class="order-item">
+                        <div class="order-detail">
+                            <p class="order-id">Order ID : {{ order.order_id }}</p>
+                            <p>Model : {{ order.car_id.model }}</p>
+                            <p>Delivering to : {{order.user_id.address}}</p>
+                            <p>Status : {{ order.status }}</p>
+                            <p>Estimated Delivery : {{ order.est_del }}</p>
+                        </div>
+                        <div class="order-actions">
+                            <p class="order-amt">Order Amount : € {{ order.order_amt }}</p>
+                            {% if order.status == "Cancelled & Refunded" %}
+                                <a href="{% url 'send_receipt' re_type=1 order_id=order.order_id %}" class="send-receipt-btn">Send Receipt</a>
+                                <a href="{% url 'send_receipt' re_type=2 order_id=order.order_id %}" class="send-receipt-btn">Send Refund Receipt</a>
+                            {% elif order.status == "Cancellation Accepted" %}
+                                <a href="{% url 'send_receipt' re_type=1 order_id=order.order_id %}" class="send-receipt-btn">Send Receipt</a>
+                            {% elif order.status == "Cancellation Rejected" %}
+                                <a href="{% url 'send_receipt' re_type=1 order_id=order.order_id %}" class="send-receipt-btn">Send Receipt</a>
+                            {% elif order.status == "Dispatched" %}
+                                <a href="{% url 'send_receipt' re_type=1 order_id=order.order_id %}" class="send-receipt-btn">Send Receipt</a>
+                            {% elif order.status == "Delivered" %}
+                                <a href="{% url 'send_receipt' re_type=1 order_id=order.order_id %}" class="send-receipt-btn">Send Receipt</a>
+                            {% elif order.status == "Refunded" %}
+                                <a href="{% url 'send_receipt' re_type=1 order_id=order.order_id %}" class="send-receipt-btn">Send Receipt</a>
+                                <a href="{% url 'send_receipt' re_type=2 order_id=order.order_id %}" class="send-receipt-btn">Send Refund Receipt</a>
+                            {% elif order.status == "Requested Cancellation" %}
+                                <a href="{% url 'send_receipt' re_type=1 order_id=order.order_id %}" class="send-receipt-btn">Send Receipt</a>
+                            {% else %}
+                                <a href="{% url 'send_receipt' re_type=1 order_id=order.order_id %}" class="send-receipt-btn">Send Receipt</a>
+                                <a href="{% url 'client_cancel' id=order.order_id %}" class="cancel-btn">Request Cancellation</a>
+                            {% endif %}
+                            <a href="{% url 'track_order' order_id=order.order_id %}" class="send-receipt-btn">Track Order</a>
+                        </div>
+                    </div>
+                    {% empty %}
+                        <p>No Orders made by user yet!</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+        {% endif %}
+    </body>
+</html>
+
+{% endblock %}

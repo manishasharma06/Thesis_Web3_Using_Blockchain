@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<html>
+    <head>
+        <title>{{ company }}</title>
+        <link rel="stylesheet" href="{% static 'company.css' %}"/>
+    </head>
+    <body>
+        <h1 class="base_name">Block-Chain Representation</h1>
+        <div class="block-search">
+            <form method="GET" action="{% url 'blockchain'%}" class="search-form">
+                <input type="text" name="search_query" placeholder="Search by Request ID or Order ID">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        {% if msg == None %}
+            <div class="block-rep">
+                <div class="block">
+                    <p>Block Type : Genesis</p>
+                    <p>Previous Hash : None</p>
+                    <p>Hash : {{ genesis.hash }}</p>
+                    <p>Sender : Customer</p>
+                    <p>Receiver : Company</p>
+                    <p>Amount : € {{ genesis.amount }}</p>
+                </div>
+                <div class="arrow-right"></div>
+                <div class="block">
+                    <p>Block Type : Block</p>
+                    <p>Previous Hash : {{ chain.previous_hash }}</p>
+                    <p>Hash : {{ chain.hash }}</p>
+                    <p>Sender : Company</p>
+                    <p>Receiver : Merchant</p>
+                    <p>Amount : € {{chain.amount}}</p>
+                </div>
+                <div class="arrow-right"></div>
+                <div class="block">
+                    <p>Block Type : Block</p>
+                    <p>Previous Hash : {{ chain.hash }}</p>
+                    <p>Hash : a6df854a</p>
+                    <p>Sender : Merchant</p>
+                    <p>Receiver : Fuel Supplier</p>
+                    <p>Amount : € 400</p>
+                </div>
+            </div>
+            <div class="info-blockchain">
+                <div class="para">
+                    <p class="head">What does block consist of?</p>
+                    <ol>
+                        <li>A block consist of various details regarding itself and transactions.</li>
+                        <li>A block has its hash code for data which can be used to verify with next block to check if data is tampered or not.</li>
+                        <li>It also contains previous block hash to provide linkage and verify the previous block.</li>
+                        <li>It contains other data like transactions, timestamp, etc.</li>
+                        <li>Example : Consider <strong>Second Block</strong> in the given network having its own hash : <strong>{{ chain.hash }}</strong>
+                             and previous block hash : <strong>{{ chain.previous_hash }}</strong> and may contain other transactional data like
+                              sender/receiver information, timestamp etc.</li>
+                    </ol>
+                </div>
+                <div class="para">
+                    <p class="head">First Block : Genesis</p>
+                    <ol>
+                        <li>Genesis block or block 0 is the starting block in the blockchain network</li>
+                        <li>It is an ancester of every block in network as every other block can be traced back to it via linkage.</li>
+                        <li>As it is the first block in the network it does have previous hash.</li>
+                        <li>Example : Consider <strong>First Block</strong> in the given network having its own hash : <strong>{{ genesis.hash }}</strong> and previous hash as None</li>
+                    </ol>
+                </div>
+            </div>
+        {% else %}
+            <p class="msg-block">{{ msg }}</p>
+        {% endif %}
+    </body>
+</html>
+
+{% endblock %}

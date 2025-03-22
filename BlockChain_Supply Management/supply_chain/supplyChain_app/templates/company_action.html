@@ -1,0 +1,257 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<html>
+    <head>
+        <title>Panel</title>
+        <link rel="stylesheet" href="{% static 'company.css' %}"/>
+    </head>
+    <body>
+        <h1 class="base_name">BMW</h1>
+        <!-- update, cancel(leads to refund), -->
+        <div class="action-flex">
+            <div class="action-left">
+                {% if option == 1 %}
+                    <a href="{% url 'company_actions' option=1 %}" class="selected">Actions</a>
+                    <a href="{% url 'company_actions' option=2 %}">Progress</a>
+                    <a href="{% url 'company_actions' option=3 %}">Contact</a>
+                    <a href="{% url 'company_actions' option=4 %}">Requests</a>
+                    <a href="{% url 'company_actions' option=5 %}">Dispatch Order</a>
+                {% elif option == 2 %}
+                    <a href="{% url 'company_actions' option=1 %}">Actions</a>
+                    <a href="{% url 'company_actions' option=2 %}" class="selected">Progress</a>
+                    <a href="{% url 'company_actions' option=3 %}">Contact</a>
+                    <a href="{% url 'company_actions' option=4 %}">Requests</a>
+                    <a href="{% url 'company_actions' option=5 %}">Dispatch Order</a>
+                {% elif option == 3 %}
+                    <a href="{% url 'company_actions' option=1 %}">Actions</a>
+                    <a href="{% url 'company_actions' option=2 %}">Progress</a>
+                    <a href="{% url 'company_actions' option=3 %}" class="selected">Contact</a>
+                    <a href="{% url 'company_actions' option=4 %}">Requests</a>
+                    <a href="{% url 'company_actions' option=5 %}">Dispatch Order</a>
+                {% elif option == 4 %}
+                    <a href="{% url 'company_actions' option=1 %}">Actions</a>
+                    <a href="{% url 'company_actions' option=2 %}">Progress</a>
+                    <a href="{% url 'company_actions' option=3 %}">Contact</a>
+                    <a href="{% url 'company_actions' option=4 %}" class="selected">Requests</a>
+                    <a href="{% url 'company_actions' option=5 %}">Dispatch Order</a>
+                {% else %}
+                    <a href="{% url 'company_actions' option=1 %}">Actions</a>
+                    <a href="{% url 'company_actions' option=2 %}">Progress</a>
+                    <a href="{% url 'company_actions' option=3 %}">Contact</a>
+                    <a href="{% url 'company_actions' option=4 %}">Requests</a>
+                    <a href="{% url 'company_actions' option=5 %}" class="selected">Dispatch Order</a>
+                {% endif %}
+            </div>
+            <div class="action-right">
+                {% if option == 1 %}
+                    <h3>Actions on Order</h3>
+                    <form method="GET" action="{% url 'company_actions' option=1 %}" class="search-form">
+                        <input type="text" name="search_query" placeholder="Search by ID or Customer Name">
+                        <button type="submit">Search</button>
+                    </form>
+                    <div class="status-list">
+                        {% for status in data %}
+                            <div class="status">
+                                <div class="info">
+                                    <p class="bold">ID : {{ status.order_id }}</p>
+                                    <p>Model : {{ status.car_id.model }}</p>
+                                    <p>Customer Name : {{ status.user_id.username }}</p>
+                                    <p>Status : {{ status.status }}</p>
+                                    <p>Purchase Date/Time : {{ status.dt }}</p>
+                                </div>
+                                <div class="status-action">
+                                    {% if status.status == "Cancellation Accepted" %}
+                                        <a href="{% url 'initiate_refund' order_id=status.order_id %}" onclick="return confirm('Initiate Refund?')" class="refund-btn" >Initiate Refund</a>
+                                    {% elif status.status == "Cancelled & Refunded" %}
+                                        <p>Order closed due to cancellation and refund has been initiated.</p>
+                                    {% elif status.status == "Ready to Dispatch" %}
+                                        <p>Please select merchant from dispatch order tab or view progress in progress tab.</p>
+                                    {% elif status.status == "Dispatched" %}
+                                        <a href="{% url 'company_actions' option=2 %}" class="refund-btn">Track Order</a>
+                                    {% elif status.status == "Delivered" %}
+                                        <p>Order Complete!</p>
+                                    {% elif status.status == "Requested Cancellation" %}
+                                        <p>Requested for cancellation, Please check request tab!</p>
+                                    {% else %}
+                                        <form method="POST" action="{% url 'update_status' id=status.order_id %}" class="status-form">
+                                            {% csrf_token %}
+                                            <select name="status" id="update_status">
+                                                <option value="1">Confirmed</option>
+                                                <option value="2">At Assembly</option>
+                                                <option value="3">Ready To Dispatch</option>
+                                            </select>
+                                            <button type="submit">Update Status</button>
+                                        </form>
+                                        <a href="{% url 'cancel_order' order_id=status.order_id %}" onclick="return confirm('Cancel Order?')" class="cancel-btn" >Cancel</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% elif option == 2 %}
+                    <h3>Progress On Order ID.</h3>
+                    <form method="GET" action="{% url 'company_actions' option=2 %}" class="search-form">
+                        <input type="text" name="search_query" placeholder="Search by Order ID.">
+                        <button type="submit">Search</button>
+                    </form>
+                    <p>Displaying Progress for Order ID : {{ search_query }}</p>
+                    <div class="transaction-progress">
+                        {% for transaction in transactions %}
+                            <div class="transaction">
+                                <div class="transaction-details">
+                                    <p>Transaction ID : {{ transaction.transaction_id }}</p>
+                                    <p>Action : {{ transaction.action }}</p>
+                                    <p>TimeStamp : {{ transaction.timestamp }}</p>
+                                </div>
+                            </div>
+                            {% if not forloop.last %}
+                                <div class="arrow"></div>
+                            {% endif %}
+                        {% empty %}
+                            <p>Please make a valid Search for Order ID to see all Transactions.</p>
+                        {% endfor %}
+                    </div>
+                {% elif option == 3 %}
+                    <div class="mail">
+                        <p>Send Mail (Via G-Mail)</p>
+                        <form method="GET" action="{% url 'company_actions' option=31 %}" class="search-form">
+                            <input type="text" name="search_query" placeholder="Enter Order ID." required>
+                            <button type="submit">Search</button>
+                        </form>
+                        {% if order_31 == None %}
+                            <p>{{ msg }}</p>
+                            <div class="create-mail">
+                                <form method="POST" action="#">
+                                    {% csrf_token %}
+                                    <label for="subject">Subject</label>
+                                    <input type="text" name="subject" disabled/>
+                                    <label for="content">Content</label>
+                                    <textarea placeholder="Body of the mail." name="content" disabled></textarea>
+                                    <button type="submit" disabled>Send Mail</button>
+                                </form>
+                            </div>
+                            <p>View Sent Mails.</p>
+                            <p>{{ msg }}</p>
+                        {% else %}
+                            <p>Order ID : {{msg}}</p>
+                            <div class="create-mail">
+                                <form method="POST" action="{% url 'contact_mail' order_id=order_31.order_id %}">
+                                    {% csrf_token %}
+                                    <label for="subject">Subject</label>
+                                    <input type="text" name="subject"/>
+                                    <label for="content">Content</label>
+                                    <textarea placeholder="Body of the mail." name="content"></textarea>
+                                    <button type="submit">Send Mail</button>
+                                </form>
+                            </div>
+                            <p>View Sent Mails.</p>
+                            <div class="mail-container">
+                                {% for mail in mails %}
+                                    <div class="mail-view">
+                                        <p class="mail-subject"> Subject : {{mail.subject}}</p>
+                                        <p class="mail-body">Body : {{mail.body}}</p>
+                                        <p class="mail-timestamp">Sent At : {{mail.sent_at}}</p>
+                                    </div>
+                                {% empty %}
+                                    <p>Never Mailed</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% elif option == 4 %}
+                    <p>Requests will be shown below</p>
+                    <form method="GET" action="{% url 'company_actions' option=4 %}" class="search-form">
+                        <input type="text" name="search_query" placeholder="Search by Request ID or Order ID">
+                        <button type="submit">Search</button>
+                    </form>
+                    <div class="status-list">
+                        {% for request in requests %}
+                            <div class="status">
+                                <p class="bold">Request ID : {{ request.request_id }}</p>
+                                <p>Order ID : {{ request.order.order_id }}</p>
+                                <p>Type : Cancellation</p>
+                                <p>Client Reason : {{ request.client_reason }}</p>
+                                <p>Status : {{ request.status }}</p>
+                                {% if request.status == "Accepted" %}
+                                    <p>Company Reason : {{ request.company_reason }}</p>
+                                    <p>Request Accepted, please follow action tab to initiate refund!</p>
+                                {% elif request.status == "Rejected" %}
+                                    <p>Company Reason : {{ request.company_reason }}</p>
+                                    <p>Request Rejected</p>
+                                {% else %}
+                                    <div class="req-form">
+                                        <form method="POST" action="{% url 'handle_request' request_id=request.request_id %}">
+                                            {% csrf_token %}
+                                            <textarea placeholder="Reason for the following decision." name="reason" required></textarea>
+                                            <button type="submit" name="accept" class="accept" onclick="return confirm('Accept Cancellation?')">Accept</button>
+                                            <button type="submit" name="reject" class="reject" onclick="return confirm('Reject Cancellation?')">Reject</button>
+                                        </form>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% elif option == 5 %}
+                    <p>Available order ready to dispatch.</p>
+                    <form method="GET" action="{% url 'company_actions' option=4 %}" class="search-form">
+                        <input type="text" name="search_query" placeholder="Search by Request ID or Order ID">
+                        <button type="submit">Search</button>
+                    </form>
+                    <div class="status-list">
+                        {% for order_5 in orders_5 %}
+                            <div class="status">
+                                <p class="bold">Order ID : {{ order_5.order_id }}</p>
+                                <p>Status : {{ order_5.status }}</p>
+                                <p>Country : {{ order_5.user_id.country }}</p>
+                                <div class="select-merchant-flex">
+                                    <div class="left-select-merchant">
+                                        <p class="bold">Merchant : Arihaat</p>
+                                        <p>Transport Type : Via Land/Sea</p>
+                                        <p>Quotation : € 510 Domestic/International</p>
+                                        <p>EST Delivery : 5 days Domestic/12 days International.</p>
+                                        <div class="merch-select-form">
+                                            <form method="POST" action="{% url 'merchant_action' merch_id=1 order_id=order_5.order_id %}">
+                                            {% csrf_token %}
+                                                <select name="dispatch_option" id="dispatch_option">
+                                                    <option value="1">Domestic</option>
+                                                    <option value="2">International</option>
+                                                </select>
+                                                <button type="submit">Dispatch</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="right-select-merchant">
+                                        <p class="bold">Merchant : Vilosma</p>
+                                        <p>Transport Type : Via Land/Air</p>
+                                        <p>Quotation : € 440 Dosmestic/ € 1280 International</p>
+                                        <p>EST Delivery : 5 days Domestic/ 8 days International.</p>
+                                        <div class="merch-select-form">
+                                            <form method="POST" action="{% url 'merchant_action' merch_id=2 order_id=order_5.order_id %}">
+                                            {% csrf_token %}
+                                                <select name="dispatch_option" id="dispatch_option">
+                                                    <option value="1">Domestic</option>
+                                                    <option value="2">International</option>
+                                                </select>
+                                                <button type="submit">Dispatch</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <p>No order are ready to dispatch</p>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    option 1
+                {% endif %}
+            </div>
+        </div>
+    </body>
+</html>
+
+{% endblock %}

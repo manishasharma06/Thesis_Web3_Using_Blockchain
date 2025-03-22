@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<html>
+    <head>
+        <title>Payment Gateway</title>
+        <link rel="stylesheet" href="{% static 'client.css' %}"/>
+    </head>
+    <body>
+        <h1 class="header">Payment Gateway</h1>
+        <div class="outer-outer">
+            <div class="outer-container">
+                <div class="left-flex">
+                    <p class="heading">Contact Information</p>
+                    <p class="content">Name : {{ user.username }}</p>
+                    <p class="content">Phone Number : {{ user.phone_num }}</p>
+                    <p class="content">Address : {{ user.address }}</p>
+                    <p class="content">Expected Delivery : {{ est_del }}</p><br/>
+                    <p class="content">Note : Delivery date may due vary due to any escalation in transit. Please read all <a href="#">TnC</a> carefully.</p>
+                </div>
+                <div class="right-flex">
+                    <p class="heading">Transaction Information</p>
+                    <h4 class="sub-heading">Vehicle Information</h4>
+                    <p class="content">BMW {{car.model}}</p>
+                    <p class="content">Transmission : {{car.transmission}}</p>
+                    <p class="content">Fuel Type : {{car.fuel_type}}</p><br/>
+                    <h4 class="sub-heading">Payment Information</h4>
+                    <table>
+                        <tr>
+                            <th>Base Price :</th>
+                            <td>€ {{car.price}}</td>
+                        </tr>
+                        <tr>
+                            <th>VAT :</th>
+                            <td>19 %</td>
+                        </tr>
+                        <tr>
+                            <th>Final Price :</th>
+                            <td>€ {{ final_price }}</td>
+                        </tr>
+                    </table>
+                    <p class="content">Payment Method : Wallet</p>
+                    <table>
+                        <tr>
+                            <th>Wallet :</th>
+                            <td>€ {{ user.wallet_amt }}</td>
+                        </tr>
+                        <tr>
+                            <th>Price :</th>
+                            <td>€ -{{ final_price }}</td>
+                        </tr>
+                        <tr>
+                            <th>Balance :</th>
+                            <td>€ {{ updated_wallet }}</td>
+                        </tr>
+                    </table>
+                    <div class="ord-area">
+                        {% if updated_wallet >= 0 %}
+                            <a href="{% url 'place_order' car_id=car.car_id user_id=user.user_id order_amt=final_price updated_wallet=updated_wallet %}" class="ord-btn">Place Order</a>
+                        {% else %}
+                            <p class="insufficient-funds-msg">Insfficient Funds. Unable to process the order.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+{% endblock %}

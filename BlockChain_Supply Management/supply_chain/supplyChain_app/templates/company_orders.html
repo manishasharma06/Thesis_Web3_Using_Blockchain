@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<html>
+    <head>
+        <title>Orders</title>
+        <link rel="stylesheet" href="{% static 'company.css' %}"/>
+    </head>
+    <body>
+        <h1 class="base_name">BMW</h1>
+        <h2 class="sub-heading">Order List</h2>
+        <div class="ortable">
+            <table class="order-table">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Car Model</th>
+                    <th>Customer Name</th>
+                    <th>Purchase Amount</th>
+                    <th>Status</th>
+                    <th>Purchase Date</th>
+                    <th>EST Delivery</th>
+                    <th>Details</th>
+                </tr>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.order_id }}</td>
+                        <td>{{ order.car_id.model }}</td>
+                        <td>{{ order.user_id.username }}</td>
+                        <td>€ {{ order.order_amt }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>{{ order.dt }}</td>
+                        <td>{{ order.est_del }}</td>
+                        <td><a href="{% url 'company_actions' option=1 %}">View</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>
+
+{% endblock %}

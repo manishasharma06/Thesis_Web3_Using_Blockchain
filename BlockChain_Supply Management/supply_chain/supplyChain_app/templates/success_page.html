@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<html>
+    <head>
+        <title>Success!</title>
+        <link rel="stylesheet" href="{% static 'client.css' %}"/>
+    </head>
+    <body>
+        <div class="success-outline">
+            <div class="success-box">
+                <div class="tick-img">
+                    <img src="{% static 'orange_tick.png' %}" alt="Success Tick"/>
+                    <p>Order Placed Successfully!</p>
+                </div>
+                <div class="success-info">
+                    <p>Payment and Shipping Details</p>
+                    <table>
+                        <tr>
+                            <th>Order ID :</th>
+                            <td>{{ order_id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Order Amount :</th>
+                            <td>€ {{ order.order_amt }}</td>
+                        </tr>
+                        <tr>
+                            <th>Deliver At :</th>
+                            <td>{{ order.user_id.address }}</td>
+                        </tr>
+                        <tr>
+                            <th>EST. Delivery :</th>
+                            <td>{{ order.est_del }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="home-btn">
+            <a href="{% url 'home' %}">Back to Home</a>
+        </div>
+    </body>
+</html>
+
+{% endblock %}
