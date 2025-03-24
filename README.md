@@ -1,73 +1,30 @@
-# Blockchain-Based Supply Chain Management System
+## Web3 Supply Chain DApp (Master Thesis)
 
-This project is a Java-based **Blockchain implementation for Supply Chain Management**, designed to improve transparency, traceability, and security in the product lifecycle — from manufacturing to delivery.
+# Web3 Supply Chain DApp using Django & Blockchain
 
-It simulates the working of a basic blockchain where each block records a transaction/event in the supply chain, and all records are cryptographically secured.
+### Overview
+As part of my master's thesis, I designed and built a decentralized application (DApp) that improves supply chain transparency and traceability using blockchain technology.
 
----
+### Features
+- Decentralized order & refund tracking
+- Secure blockchain ledger backend
+- Django-based smart contract integration
+- Role-based access for suppliers, vendors, customers
 
-## Project Highlights
+### Tech Stack
+- Django
+- Web3.py
+- Ethereum/Polygon Testnet
+- Smart Contracts (Solidity)
+- PostgreSQL
 
-- Blockchain implementation from scratch in Java.
-- Simulates key supply chain stages like Manufacturing, Warehouse, Distributor, and Retail.
-- SHA-256 hashing to ensure data immutability.
-- Timestamped blocks and linked records.
-- Real-time addition of blocks to simulate ongoing supply chain events.
+###  What I Learned
+- Writing and deploying smart contracts
+- Integrating blockchain with Django
+- Handling immutability and gas optimization
+- Researching and solving real-world logistics problems
 
----
-
-## Project Structure
-
-BlockChain_SupplyManagement/ │ ├── src/ │ ├── Block.java │ ├── SupplyChainBlock.java │ ├── Blockchain.java │ └── Main.java │ └── README.md
-
-markdown
-Copy
-Edit
-
-- `Block.java`: Defines the structure of each block including hash, previous hash, data, and timestamp.
-- `SupplyChainBlock.java`: Represents the data model for supply chain-related transactions.
-- `Blockchain.java`: Handles the chain, validation, and block addition logic.
-- `Main.java`: Provides a simple console interface to simulate supply chain operations.
-
----
-
-## How to Run
-
-### Requirements
-
-- Java 8 or above
-- Any Java IDE (IntelliJ IDEA, Eclipse, VS Code)
-
-### Steps
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/yourusername/blockchain-supply-management.git
-cd blockchain-supply-management
-Open the project in your IDE and run Main.java.
-
-Simulate creating blocks by adding supply chain events (like manufacturing, shipping, etc.).
-
-Sample Output
-
-Creating genesis block...
-Block 1 added to the chain
-Block 2 added to the chain
-
-Blockchain valid: true
-Tech Stack
-Java (Core)
-
-SHA-256 (Hashing)
-
-Console-based UI
-
-Learning Outcomes:
-
-Understanding Blockchain principles (hashing, block structure, linking)
-
-Hands-on experience building a ledger-like system
-
-Applying OOP principles to simulate real-world systems
-
+### Run Locally
+git clone https://github.com/your-repo
+cd dapp
+python manage.py runserver
